@@ -1,24 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Package } from "lucide-react";
 
-export default function OrderSuccessPage() {
+function OrderSuccessContent() {
   const searchParams = useSearchParams();
   const orderId = searchParams.get("orderId");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
@@ -81,3 +72,21 @@ export default function OrderSuccessPage() {
     </div>
   );
 }
+
+export default function OrderSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white dark:bg-slate-950">
+        <Navbar />
+        <main className="container-custom py-20">
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-muted-foreground">Loading...</p>
+          </div>
+        </main>
+      </div>
+    }>
+      <OrderSuccessContent />
+    </Suspense>
+  );
+}
+

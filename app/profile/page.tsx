@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -14,7 +14,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useToast } from "@/lib/toast-context";
 import { MapPin, Package, FileText, TrendingUp, Heart } from "lucide-react";
 
-export default function ProfilePage() {
+function ProfilePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { showToast } = useToast();
@@ -805,3 +805,19 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+export default function ProfilePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white dark:bg-slate-950">
+        <Navbar />
+        <div className="container-custom py-20 text-center">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    }>
+      <ProfilePageContent />
+    </Suspense>
+  );
+}
+
