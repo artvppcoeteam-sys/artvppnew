@@ -4,7 +4,7 @@
     "type": "module",
     "private": true,
     "scripts": {
-        "build:frontend": "cd frontart && npm install && npm run build",
+        "build:frontend": "cd frontart && npm ci --include=dev && npm run build",
         "build:backend": "cd backend && npm install",
         "vercel-build": "npm run build:frontend && npm run build:backend"
     }
