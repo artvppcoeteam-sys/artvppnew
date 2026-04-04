@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontart/dist/$1",
+      "continue": true
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/frontart/dist/index.html"
+    }
+  ]
+}

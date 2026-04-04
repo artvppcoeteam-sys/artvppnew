@@ -1,0 +1,272 @@
+[
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403117/artvpp/frontend/images/1.jpg",
+    "publicId": "artvpp/frontend/images/1",
+    "originalFilename": "1.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\41.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403120/artvpp/frontend/images/41.png",
+    "publicId": "artvpp/frontend/images/41",
+    "originalFilename": "41.png"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\45.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403126/artvpp/frontend/images/45.png",
+    "publicId": "artvpp/frontend/images/45",
+    "originalFilename": "45.png"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\55.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403131/artvpp/frontend/images/55.png",
+    "publicId": "artvpp/frontend/images/55",
+    "originalFilename": "55.png"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\56.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403134/artvpp/frontend/images/56.jpg",
+    "publicId": "artvpp/frontend/images/56",
+    "originalFilename": "56.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\66.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403135/artvpp/frontend/images/66.jpg",
+    "publicId": "artvpp/frontend/images/66",
+    "originalFilename": "66.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\75.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403137/artvpp/frontend/images/75.jpg",
+    "publicId": "artvpp/frontend/images/75",
+    "originalFilename": "75.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\95.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403138/artvpp/frontend/images/95.jpg",
+    "publicId": "artvpp/frontend/images/95",
+    "originalFilename": "95.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\a.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403139/artvpp/frontend/images/a.jpg",
+    "publicId": "artvpp/frontend/images/a",
+    "originalFilename": "a.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\back1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403140/artvpp/frontend/images/back1.jpg",
+    "publicId": "artvpp/frontend/images/back1",
+    "originalFilename": "back1.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\bnm.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403142/artvpp/frontend/images/bnm.jpg",
+    "publicId": "artvpp/frontend/images/bnm",
+    "originalFilename": "bnm.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\cvb.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403143/artvpp/frontend/images/cvb.jpg",
+    "publicId": "artvpp/frontend/images/cvb",
+    "originalFilename": "cvb.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\d.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403144/artvpp/frontend/images/d.jpg",
+    "publicId": "artvpp/frontend/images/d",
+    "originalFilename": "d.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\dfg.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403146/artvpp/frontend/images/dfg.jpg",
+    "publicId": "artvpp/frontend/images/dfg",
+    "originalFilename": "dfg.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\fg.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403147/artvpp/frontend/images/fg.jpg",
+    "publicId": "artvpp/frontend/images/fg",
+    "originalFilename": "fg.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\fgh.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403148/artvpp/frontend/images/fgh.jpg",
+    "publicId": "artvpp/frontend/images/fgh",
+    "originalFilename": "fgh.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\fghjk.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403149/artvpp/frontend/images/fghjk.jpg",
+    "publicId": "artvpp/frontend/images/fghjk",
+    "originalFilename": "fghjk.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\g.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403150/artvpp/frontend/images/g.jpg",
+    "publicId": "artvpp/frontend/images/g",
+    "originalFilename": "g.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\ghj.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403151/artvpp/frontend/images/ghj.jpg",
+    "publicId": "artvpp/frontend/images/ghj",
+    "originalFilename": "ghj.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\ghjkl.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403152/artvpp/frontend/images/ghjkl.jpg",
+    "publicId": "artvpp/frontend/images/ghjkl",
+    "originalFilename": "ghjkl.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\im.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403154/artvpp/frontend/images/im.jpg",
+    "publicId": "artvpp/frontend/images/im",
+    "originalFilename": "im.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\im2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403155/artvpp/frontend/images/im2.jpg",
+    "publicId": "artvpp/frontend/images/im2",
+    "originalFilename": "im2.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\jfj.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403156/artvpp/frontend/images/jfj.jpg",
+    "publicId": "artvpp/frontend/images/jfj",
+    "originalFilename": "jfj.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\jj.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403157/artvpp/frontend/images/jj.jpg",
+    "publicId": "artvpp/frontend/images/jj",
+    "originalFilename": "jj.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\jj.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403158/artvpp/frontend/images/jj.jpg",
+    "publicId": "artvpp/frontend/images/jj",
+    "originalFilename": "jj.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\l.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403160/artvpp/frontend/images/l.jpg",
+    "publicId": "artvpp/frontend/images/l",
+    "originalFilename": "l.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\n.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403160/artvpp/frontend/images/n.jpg",
+    "publicId": "artvpp/frontend/images/n",
+    "originalFilename": "n.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\nfnf.png",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403162/artvpp/frontend/images/nfnf.png",
+    "publicId": "artvpp/frontend/images/nfnf",
+    "originalFilename": "nfnf.png"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\okjm.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403163/artvpp/frontend/images/okjm.jpg",
+    "publicId": "artvpp/frontend/images/okjm",
+    "originalFilename": "okjm.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\p.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403164/artvpp/frontend/images/p.jpg",
+    "publicId": "artvpp/frontend/images/p",
+    "originalFilename": "p.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\rgb.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403166/artvpp/frontend/images/rgb.jpg",
+    "publicId": "artvpp/frontend/images/rgb",
+    "originalFilename": "rgb.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\slider1.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403167/artvpp/frontend/images/slider1.jpg",
+    "publicId": "artvpp/frontend/images/slider1",
+    "originalFilename": "slider1.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\slider2.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403168/artvpp/frontend/images/slider2.jpg",
+    "publicId": "artvpp/frontend/images/slider2",
+    "originalFilename": "slider2.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\slider3.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403169/artvpp/frontend/images/slider3.jpg",
+    "publicId": "artvpp/frontend/images/slider3",
+    "originalFilename": "slider3.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\slider4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403170/artvpp/frontend/images/slider4.jpg",
+    "publicId": "artvpp/frontend/images/slider4",
+    "originalFilename": "slider4.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\slider5.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403172/artvpp/frontend/images/slider5.avif",
+    "publicId": "artvpp/frontend/images/slider5",
+    "originalFilename": "slider5.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\tyu.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403172/artvpp/frontend/images/tyu.jpg",
+    "publicId": "artvpp/frontend/images/tyu",
+    "originalFilename": "tyu.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\vbh.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403174/artvpp/frontend/images/vbh.jpg",
+    "publicId": "artvpp/frontend/images/vbh",
+    "originalFilename": "vbh.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\vh4.jpg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403175/artvpp/frontend/images/vh4.jpg",
+    "publicId": "artvpp/frontend/images/vh4",
+    "originalFilename": "vh4.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\WhatsApp Image 2026-02-08 at 1.16.17 PM.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403177/artvpp/frontend/images/WhatsApp%20Image%202026-02-08%20at%201.16.17%20PM.jpg",
+    "publicId": "artvpp/frontend/images/WhatsApp Image 2026-02-08 at 1.16.17 PM",
+    "originalFilename": "WhatsApp Image 2026-02-08 at 1.16.17 PM.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\WhatsApp Image 2026-02-08 at 1.16.18 PM.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403178/artvpp/frontend/images/WhatsApp%20Image%202026-02-08%20at%201.16.18%20PM.jpg",
+    "publicId": "artvpp/frontend/images/WhatsApp Image 2026-02-08 at 1.16.18 PM",
+    "originalFilename": "WhatsApp Image 2026-02-08 at 1.16.18 PM.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\WhatsApp Image 2026-02-08 at 1.16.18 PMaa.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403179/artvpp/frontend/images/WhatsApp%20Image%202026-02-08%20at%201.16.18%20PMaa.jpg",
+    "publicId": "artvpp/frontend/images/WhatsApp Image 2026-02-08 at 1.16.18 PMaa",
+    "originalFilename": "WhatsApp Image 2026-02-08 at 1.16.18 PMaa.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\WhatsApp Image 2026-02-08 at 1.16.19 PM.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403181/artvpp/frontend/images/WhatsApp%20Image%202026-02-08%20at%201.16.19%20PM.jpg",
+    "publicId": "artvpp/frontend/images/WhatsApp Image 2026-02-08 at 1.16.19 PM",
+    "originalFilename": "WhatsApp Image 2026-02-08 at 1.16.19 PM.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\xcfg.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403182/artvpp/frontend/images/xcfg.jpg",
+    "publicId": "artvpp/frontend/images/xcfg",
+    "originalFilename": "xcfg.jpeg"
+  },
+  {
+    "localPath": "C:\\Users\\shrut\\Downloads\\appmerge\\frontart\\public\\images\\y.jpeg",
+    "cloudinaryUrl": "https://res.cloudinary.com/djljjozxa/image/upload/v1771403183/artvpp/frontend/images/y.jpg",
+    "publicId": "artvpp/frontend/images/y",
+    "originalFilename": "y.jpeg"
+  }
+]

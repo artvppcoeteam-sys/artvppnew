@@ -1,0 +1,49 @@
+﻿{
+    "product":  {
+                    "id":  "57731a9b-a0b5-4b0f-a664-ca7eed77c12e",
+                    "artist_id":  "2f18a6b1-1419-47e3-8d49-f8e20ef7f4ea",
+                    "category_id":  "a929a807-6571-4ad2-8bb6-e0221a0f5302",
+                    "title":  "kjhg",
+                    "description":  "kjbhg",
+                    "price":  "76",
+                    "product_type":  "digital",
+                    "subcategory":  null,
+                    "quantity":  null,
+                    "is_unique":  false,
+                    "size":  null,
+                    "weight":  null,
+                    "is_fragile":  false,
+                    "created_at":  "2026-02-07T15:13:58.990Z",
+                    "artist_name":  "abc",
+                    "category_name":  "Digital Art"
+                },
+    "variants":  [
+                     {
+                         "id":  "c0bb2e68-6216-407c-8bcd-ea5c8420df83",
+                         "product_id":  "57731a9b-a0b5-4b0f-a664-ca7eed77c12e",
+                         "asset_url":  "https://res.cloudinary.com/dqnkl1zov/raw/upload/v1770497042/nindcp86pewsowijugib",
+                         "asset_type":  "zip",
+                         "nft_chain":  null,
+                         "nft_contract":  null,
+                         "nft_token_id":  null,
+                         "created_at":  "2026-02-07T15:14:02.610Z",
+                         "preview_url":  "https://res.cloudinary.com/dqnkl1zov/image/upload/v1770497040/zbrb9lvff3lwecryemnq.png"
+                     }
+                 ],
+    "media":  [
+                  {
+                      "id":  null,
+                      "product_id":  "57731a9b-a0b5-4b0f-a664-ca7eed77c12e",
+                      "media_url":  "https://res.cloudinary.com/dqnkl1zov/image/upload/v1770497040/zbrb9lvff3lwecryemnq.png"
+                  }
+              ],
+    "similarProducts":  [
+                            {
+                                "id":  "485a08b2-205a-464e-9df8-3159b0bd6eab",
+                                "title":  "kjhg",
+                                "price":  "76",
+                                "product_type":  "digital",
+                                "artist_name":  "abc"
+                            }
+                        ]
+}
