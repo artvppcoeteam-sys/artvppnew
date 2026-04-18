@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Star, Palette, Users, Award, TrendingUp, Sparkles, Heart, ShoppingBag, Brush, CheckCircle, Play, ChevronRight, Info, Eye } from 'lucide-react';
+import { ArrowRight, Star, Palette, Users, Award, TrendingUp, Sparkles, Heart, ShoppingBag, Brush, CheckCircle, Play, ChevronRight, ChevronLeft, Info, Eye } from 'lucide-react';
 import emp from '../../../assets/emp.png';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
@@ -9,11 +9,7 @@ import { featuredArtists } from '../../data/mockData';
 import { getProducts } from '../../utils/api';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import slider1 from '../../../assets/slider1.jpg';
-import slider2 from '../../../assets/slider2.jpg';
-import slider3 from '../../../assets/slider3.jpg';
-import slider4 from '../../../assets/slider4.jpg';
-import slider5 from '../../../assets/slider5.jpg';
+// Slider images are now loaded from Cloudinary URLs
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -65,11 +61,19 @@ export function HomePage() {
   }, []);
 
   const heroSlides = [
-    { id: 'slide-1', image: "https://res.cloudinary.com/djljjozxa/image/upload/v1771403167/artvpp/frontend/images/slider1.jpg", title: 'Discover Indian Art', artist: 'Curated Collection' },
-    { id: 'slide-2', image: "https://res.cloudinary.com/djljjozxa/image/upload/v1771403168/artvpp/frontend/images/slider2.jpg", title: 'Celebrate Creativity', artist: 'Master Works' },
-    { id: 'slide-3', image: "https://res.cloudinary.com/djljjozxa/image/upload/v1771403169/artvpp/frontend/images/slider3.jpg", title: 'Timeless Beauty', artist: 'Heritage Series' },
-    { id: 'slide-4', image: "https://res.cloudinary.com/djljjozxa/image/upload/v1771403170/artvpp/frontend/images/slider4.jpg", title: 'Modern Expressions', artist: 'Contemporary Art' },
-    { id: 'slide-5', image: "https://res.cloudinary.com/djljjozxa/image/upload/v1771403172/artvpp/frontend/images/slider5.avif", title: 'Artistic Excellence', artist: 'Featured Artists' }
+
+    { id: 'slide-1', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776247101/d8d54a62-236d-4746-9c6a-0e542af05016_zmuvmq.jpg", title: 'Discover Indian Art', artist: 'Curated Collection' },
+    { id: 'slide-2', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776247256/f73f9125-17b2-4154-b429-b162faf10aef_wpi4en.jpg", title: 'Celebrate Creativity', artist: 'Master Works' },
+    { id: 'slide-3', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776244370/18swapnil_sakhare_23000_fvcvnk.jpg", title: 'Timeless Beauty', artist: 'Heritage Series' },
+    { id: 'slide-4', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776244370/18swapnil_sakhare_15000_wzzbfm.jpg", title: 'Modern Expressions', artist: 'Contemporary Art' },
+    { id: 'slide-5', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776247297/3f374b74-85bf-47ad-820c-deae72ba5281_plwkpg.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-6', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776249255/mini_obptwk.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-7', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776246194/20swapnil_sakhare_13000_hmytas.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-8', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776246243/9swapnil_sakhare_23000_uyj9pd.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-9', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776248655/2291a641-ae9d-4fbe-addd-67ad990673a9_ybg5me.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-10', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776246529/9f434b83-1050-44e4-a339-b17397be0609_u5n7oh.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-11', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776248827/f7b53c3a-4e6d-4d5e-ab27-674fe7829882_dsinme.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
+    { id: 'slide-12', image: "https://res.cloudinary.com/dylofrbje/image/upload/v1776249066/172aee23-d050-4729-beac-07e6847eeb0a_ylfeed.jpg", title: 'Artistic Excellence', artist: 'Featured Artists' },
   ];
 
   useEffect(() => {
@@ -158,25 +162,56 @@ export function HomePage() {
                 </span>
               </motion.div>
               {/* CTA Buttons */}
-              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-5">
+              <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center gap-5 w-full max-w-2xl">
                 <Button
                   size="lg"
                   onClick={() => navigate('/marketplace')}
-                  className="bg-gradient-to-r from-[#a73f2b] to-[#b30452] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 text-white px-8 sm:px-12 py-5 sm:py-7 text-lg sm:text-xl rounded-2xl font-bold border-0 shadow-lg shadow-[#b30452]/20"
+                  className="w-full sm:w-[260px] bg-gradient-to-r from-[#a73f2b] to-[#b30452] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 text-white py-5 sm:py-7 text-lg sm:text-xl rounded-2xl font-bold border-0 shadow-lg shadow-[#b30452]/20"
                 >
-                  Explore Products
+                  Explore Art
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => navigate('/marketplace')}
-                  className="bg-white/10 backdrop-blur-md border-2 border-white/20 text-white hover:bg-white hover:text-black px-8 sm:px-12 py-5 sm:py-7 text-lg sm:text-xl rounded-2xl font-bold shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  onClick={() => navigate('/register')}
+                  className="w-full sm:w-[260px] bg-white/10 backdrop-blur-md border-2 border-white/20 text-white hover:bg-white hover:text-black py-5 sm:py-7 text-lg sm:text-xl rounded-2xl font-bold shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  Our Artworks
+                  Register Now
                 </Button>
               </motion.div>
             </motion.div>
           </div>
+        </div>
+
+        {/* Slider Navigation Arrows */}
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 bg-white/15 backdrop-blur-md hover:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 border border-white/20"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % heroSlides.length)}
+          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 bg-white/15 backdrop-blur-md hover:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 border border-white/20"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+
+        {/* Slide Indicator Dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`rounded-full transition-all duration-300 ${index === currentSlide
+                ? 'w-8 h-2.5 bg-white'
+                : 'w-2.5 h-2.5 bg-white/40 hover:bg-white/70'
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
