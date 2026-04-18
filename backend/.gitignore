@@ -40,4 +40,5 @@ Thumbs.db
 
 # MERN-AUTH-main (not part of our project)
 MERN-AUTH-main/
-
+# Scripts
+scripts/
