@@ -132,45 +132,6 @@ The backend is built with Node.js and Express, following ES Modules (ESM) syntax
 
 ---
 
-##  Environment Variables
-
-Create a `.env` file in the `backend` directory:
-
-```env
-# Server
-PORT=5000
-NODE_ENV=development
-
-# MongoDB
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/artvpp
-
-# JWT Secrets (generate using: node -e "console.log(require('crypto').randomBytes(64).toString('hex'))")
-JWT_ACCESS_SECRET=your_access_secret_here
-JWT_REFRESH_SECRET=your_refresh_secret_here
-
-# Frontend URL
-CLIENT_URL=http://localhost:3000
-
-# Email (Gmail)
-MAIL_USER=your-email@gmail.com
-MAIL_PASS=your-gmail-app-password
-
-# Google OAuth
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-# Razorpay
-RAZORPAY_KEY_ID=your_razorpay_key_id
-RAZORPAY_KEY_SECRET=your_razorpay_key_secret
-```
-
----
-
 ##  API Documentation
 
 Comprehensive API documentation is available at [`backend/docs/API_ENDPOINTS.md`](./backend/docs/API_ENDPOINTS.md)
