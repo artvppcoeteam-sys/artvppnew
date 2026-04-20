@@ -17,6 +17,11 @@ const ServicesPage = lazy(() => import('./components/pages/ServicesPage').then(m
 const StudioHirePage = lazy(() => import('./components/pages/StudioHirePage').then(module => ({ default: module.StudioHirePage })));
 const PhotographyServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.PhotographyServicePage })));
 const CalligraphyServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.CalligraphyServicePage })));
+const VideographyServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.VideographyServicePage })));
+const WallPaintingServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.WallPaintingServicePage })));
+const SculptureServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.SculptureServicePage })));
+const DesignBrandingServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.DesignBrandingServicePage })));
+const WorkshopsServicePage = lazy(() => import('./components/pages/PlatformServicePage').then(module => ({ default: module.WorkshopsServicePage })));
 const ServiceDetailPage = lazy(() => import('./components/pages/ServiceDetailPage').then(module => ({ default: module.ServiceDetailPage })));
 const WorkshopDetailPage = lazy(() => import('./components/pages/WorkshopDetailPage').then(module => ({ default: module.WorkshopDetailPage })));
 const AboutPage = lazy(() => import('./components/pages/AboutPage').then(module => ({ default: module.AboutPage })));
@@ -75,6 +80,7 @@ const AdminSettings = lazy(() => import('./components/dashboard/admin/AdminSetti
 const AdminSupport = lazy(() => import('./components/dashboard/admin/AdminSupport').then(module => ({ default: module.AdminSupport })));
 const AdminRevenue = lazy(() => import('./components/dashboard/admin/AdminRevenue').then(module => ({ default: module.AdminRevenue })));
 const AdminReports = lazy(() => import('./components/dashboard/admin/AdminReports').then(module => ({ default: module.AdminReports })));
+const AdminFeaturedArtists = lazy(() => import('./components/dashboard/admin/AdminFeaturedArtists').then(module => ({ default: module.AdminFeaturedArtists })));
 
 import { useParams } from 'react-router-dom';
 
@@ -142,6 +148,11 @@ export default function App() {
               <Route path="/services/studio-hire" element={<StudioHirePage />} />
               <Route path="/services/photography" element={<PhotographyServicePage />} />
               <Route path="/services/calligraphy" element={<CalligraphyServicePage />} />
+              <Route path="/services/videography" element={<VideographyServicePage />} />
+              <Route path="/services/wall-painting" element={<WallPaintingServicePage />} />
+              <Route path="/services/sculpture" element={<SculptureServicePage />} />
+              <Route path="/services/branding" element={<DesignBrandingServicePage />} />
+              <Route path="/services/workshops" element={<WorkshopsServicePage />} />
               <Route path="/service/:id" element={<ServiceDetailPage />} />
               <Route path="/workshop/:id" element={<WorkshopDetailPage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -210,6 +221,7 @@ export default function App() {
               <Route path="vendors" element={<AdminVendors />} />
               <Route path="users" element={<AdminUsers />} />
               <Route path="artworks" element={<AdminProducts />} />
+              <Route path="featured-artists" element={<AdminFeaturedArtists />} />
               <Route path="orders" element={<AdminOrders />} />
               <Route path="categories" element={<AdminCategories />} />
               <Route path="services" element={<AdminServices />} />

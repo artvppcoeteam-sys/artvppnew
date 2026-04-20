@@ -677,3 +677,34 @@ export const adminApproveWorkshop = (workshopId) => apiRequest(`/workshops/admin
 export const adminRejectWorkshop = (workshopId) => apiRequest(`/workshops/admin/${workshopId}/reject`, {
     method: 'POST'
 });
+// ===========================================
+// FEATURED ARTIST APIs
+// ===========================================
+
+export const getFeaturedArtists = () => apiRequest('/featured-artists');
+
+export const adminGetFeaturedArtists = () => apiRequest('/featured-artists/admin/list');
+
+export const createFeaturedArtist = (featuredData) => apiRequest('/featured-artists', {
+    method: 'POST',
+    body: JSON.stringify(featuredData)
+});
+
+export const updateFeaturedArtist = (id, featuredData) => apiRequest(`/featured-artists/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(featuredData)
+});
+
+export const deleteFeaturedArtist = (id) => apiRequest(`/featured-artists/${id}`, {
+    method: 'DELETE'
+});
+
+export const getArtistArtworksForFeatured = (id) => apiRequest(`/featured-artists/artists/${id}/artworks`);
+
+export const updateArtistFeaturedArtworks = (id, artworkIds) => apiRequest(`/featured-artists/artists/${id}/featured-artworks`, {
+    method: 'PUT',
+    body: JSON.stringify({ artworkIds })
+});
+
+export const getPublicFeaturedArtworks = (id) => apiRequest(`/featured-artists/artists/${id}/public-featured-artworks`);
+

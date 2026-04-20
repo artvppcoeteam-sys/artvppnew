@@ -33,7 +33,7 @@ import { uploadStudentSubmissionFiles } from "../middleware/upload.js";
 
 const studentSubmissionLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 5,
+    max: process.env.NODE_ENV === "production" ? 5 : 50,
     message: {
         success: false,
         message: "Too many student submissions from this IP. Please try again in 15 minutes."

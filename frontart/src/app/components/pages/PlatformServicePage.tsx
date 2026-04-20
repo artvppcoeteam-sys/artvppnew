@@ -504,3 +504,23 @@ export function PhotographyServicePage() {
 export function CalligraphyServicePage() {
   return <PlatformServicePage serviceKey="calligraphy" badgeText="Hand Lettering" />;
 }
+
+export function VideographyServicePage() {
+  return <PlatformServicePage serviceKey="videography" badgeText="Media Service" />;
+}
+
+export function WallPaintingServicePage() {
+  return <PlatformServicePage serviceKey="wall-painting" badgeText="Artistic Décor" />;
+}
+
+export function SculptureServicePage() {
+  return <PlatformServicePage serviceKey="sculpture" badgeText="3D Installations" />;
+}
+
+export function DesignBrandingServicePage() {
+  return <PlatformServicePage serviceKey="branding" badgeText="Creative Design" />;
+}
+
+export function WorkshopsServicePage() {
+  return <PlatformServicePage serviceKey="workshops" badgeText="Educational" />;
+}

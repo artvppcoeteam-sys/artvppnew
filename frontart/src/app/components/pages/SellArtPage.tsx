@@ -8,7 +8,8 @@ import { Textarea } from '../ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import {
     CheckCircle2, Upload, Loader2, Mail, Phone,
-    Lock, X, Image as ImageIcon, Clock, XCircle
+    Lock, X, Image as ImageIcon, Clock, XCircle,
+    Star, Plus
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { useNavigate, Link } from 'react-router-dom';
@@ -560,100 +561,117 @@ export function SellArtPage() {
 
     // Main application form
     return (
-        <div className="min-h-screen relative bg-gray-900">
-            {/* Background */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 via-gray-900/30 to-gray-900"></div>
+        <div className="min-h-screen relative bg-[#F7F8FA] pb-24">
+            {/* Artistic Header Section */}
+            <div className="relative h-[450px] bg-[#0A0A0A] overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <img 
+                        src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=2071&auto=format&fit=crop" 
+                        alt="Art background" 
+                        className="w-full h-full object-cover opacity-40"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#F7F8FA]" />
+                </div>
+                
+                <div className="relative z-10 max-w-5xl mx-auto px-6 h-full flex flex-col items-center justify-center text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 drop-shadow-md" style={{ fontFamily: "'Playfair Display', serif" }}>
+                            Share Your Art with the World
+                        </h1>
+                        <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
+                            Join our curated community of artists. Apply to sell your artworks on ArtVPP and reach collectors globally.
+                        </p>
+                    </motion.div>
+                </div>
             </div>
 
-            <div className="relative z-10 flex flex-col items-center">
-                {/* Hero Section */}
-                <div className="w-full max-w-4xl mx-auto text-center space-y-6 py-24 px-4">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-serif font-bold tracking-tight text-white"
-                    >
-                        Share Your Art with the World
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
-                    >
-                        Join our curated community of artists. Apply to sell your artworks on ArtVPP and reach collectors globally.
-                    </motion.p>
-                </div>
-
-                {/* Application Form */}
-                <div className="w-full max-w-3xl px-4 pb-24">
-                    <Card className="border-none shadow-2xl bg-white/95 backdrop-blur-sm">
-                        <CardHeader className="text-center border-b pb-8">
-                            <CardTitle className="text-3xl font-serif">Artist Application</CardTitle>
-                            <CardDescription className="text-base text-gray-600">
-                                Complete the form below. Our team reviews every portfolio to ensure quality.
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="pt-8">
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                {/* Primary Email (Non-editable) */}
-                                <div className="p-4 bg-gray-50 rounded-lg">
-                                    <Label className="text-sm text-gray-500">Primary Email (Verified)</Label>
-                                    <div className="flex items-center gap-2 mt-1">
-                                        <Mail className="w-5 h-5 text-gray-400" />
-                                        <span className="font-medium">{user?.email}</span>
-                                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+            {/* Application Container */}
+            <div className="max-w-4xl mx-auto px-6 -mt-24 relative z-20">
+                <Card className="border-none shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white/95 backdrop-blur-md rounded-[32px] overflow-hidden">
+                    <CardHeader className="bg-white border-b border-gray-100 p-10 text-center">
+                        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#a73f2b] to-[#b30452] rounded-2xl mb-6 shadow-lg shadow-[#b30452]/20">
+                            <CheckCircle2 className="w-8 h-8 text-white" />
+                        </div>
+                        <CardTitle className="text-4xl font-serif font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                            Artist Application
+                        </CardTitle>
+                        <CardDescription className="text-lg text-gray-600">
+                            Complete the form below. Our team reviews every portfolio to ensure quality.
+                        </CardDescription>
+                    </CardHeader>
+                    
+                    <CardContent className="p-10 space-y-12">
+                        <form onSubmit={handleSubmit} className="space-y-12">
+                            
+                            {/* Section 1: Basic Information */}
+                            <div className="space-y-8">
+                                <div className="flex items-center gap-3 border-b border-gray-100 pb-4">
+                                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <ImageIcon className="w-4 h-4 text-gray-600" />
                                     </div>
+                                    <h3 className="text-xl font-bold text-gray-900">1. Artist Profile</h3>
                                 </div>
 
-                                {/* Full Name */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="fullName">Full Name *</Label>
-                                    <Input
-                                        id="fullName"
-                                        required
-                                        placeholder="Your full legal name"
-                                        value={formData.fullName}
-                                        onChange={e => setFormData({ ...formData, fullName: e.target.value })}
-                                        className="bg-white"
-                                    />
-                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    {/* Primary Email */}
+                                    <div className="space-y-3">
+                                        <Label className="text-sm font-semibold text-gray-700">Primary Email</Label>
+                                        <div className="flex items-center gap-3 p-4 bg-gray-50 border border-gray-100 rounded-2xl">
+                                            <Mail className="w-5 h-5 text-gray-400" />
+                                            <span className="text-gray-600 font-medium">{user?.email}</span>
+                                            <CheckCircle2 className="w-4 h-4 text-green-500 ml-auto" />
+                                        </div>
+                                        <p className="text-[11px] text-gray-400">Linked to your account</p>
+                                    </div>
 
-                                {/* Secondary Email */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="secondaryEmail">Secondary Email * (for business communications)</Label>
-                                    <Input
-                                        id="secondaryEmail"
-                                        type="email"
-                                        required
-                                        placeholder="business@email.com"
-                                        value={formData.secondaryEmail}
-                                        onChange={e => setFormData({ ...formData, secondaryEmail: e.target.value })}
-                                        className="bg-white"
-                                    />
-                                    <p className="text-xs text-gray-500">
-                                        Must be different from your primary email. You'll need to verify this email after submission.
-                                    </p>
-                                </div>
+                                    {/* Full Name */}
+                                    <div className="space-y-3">
+                                        <Label htmlFor="fullName" className="text-sm font-semibold text-gray-700">Full Legal Name *</Label>
+                                        <Input
+                                            id="fullName"
+                                            required
+                                            placeholder="Your full legal name"
+                                            value={formData.fullName}
+                                            onChange={e => setFormData({ ...formData, fullName: e.target.value })}
+                                            className="h-14 bg-white border-gray-200 focus:border-[#a73f2b] focus:ring-[#a73f2b]/10 rounded-2xl px-5 transition-all text-gray-900"
+                                        />
+                                    </div>
 
-                                {/* Phone Numbers */}
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {/* Primary Phone (Non-editable if exists) */}
-                                    <div className="space-y-2">
-                                        <Label>Primary Phone</Label>
-                                        <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-md">
-                                            <Phone className="w-4 h-4 text-gray-400" />
-                                            <span className="text-gray-600">
+                                    {/* Secondary Email */}
+                                    <div className="space-y-3">
+                                        <Label htmlFor="secondaryEmail" className="text-sm font-semibold text-gray-700">Business Email *</Label>
+                                        <Input
+                                            id="secondaryEmail"
+                                            type="email"
+                                            required
+                                            placeholder="business@email.com"
+                                            value={formData.secondaryEmail}
+                                            onChange={e => setFormData({ ...formData, secondaryEmail: e.target.value })}
+                                            className="h-14 bg-white border-gray-200 focus:border-[#a73f2b] focus:ring-[#a73f2b]/10 rounded-2xl px-5 transition-all"
+                                        />
+                                        <p className="text-[11px] text-gray-500 leading-tight">
+                                            Must be different from your primary email. You'll need to verify this email after submission.
+                                        </p>
+                                    </div>
+
+                                    {/* Phones */}
+                                    <div className="space-y-3">
+                                        <Label className="text-sm font-semibold text-gray-700">Primary Phone</Label>
+                                        <div className="flex items-center gap-3 p-4 bg-gray-50 border border-gray-100 rounded-2xl">
+                                            <Phone className="w-5 h-5 text-gray-400" />
+                                            <span className="text-gray-600 font-medium">
                                                 {user?.phone || 'Not set in profile'}
                                             </span>
                                         </div>
+                                        <p className="text-[11px] text-gray-400">Current profile number</p>
                                     </div>
 
-                                    {/* Secondary Phone (Required) */}
-                                    <div className="space-y-2">
-                                        <Label htmlFor="secondaryPhone">Secondary Phone *</Label>
+                                    <div className="space-y-3">
+                                        <Label htmlFor="secondaryPhone" className="text-sm font-semibold text-gray-700">Business Phone *</Label>
                                         <Input
                                             id="secondaryPhone"
                                             type="tel"
@@ -661,229 +679,273 @@ export function SellArtPage() {
                                             placeholder="9876543210"
                                             value={formData.secondaryPhone}
                                             onChange={e => setFormData({ ...formData, secondaryPhone: e.target.value })}
-                                            className="bg-white"
+                                            className="h-14 bg-white border-gray-200 focus:border-[#a73f2b] focus:ring-[#a73f2b]/10 rounded-2xl px-5 transition-all"
                                         />
-                                        <p className="text-xs text-gray-500">10 digit number without country code</p>
+                                        <p className="text-[11px] text-gray-500">10 digit number without country code</p>
                                     </div>
                                 </div>
 
-                                {/* Profile Picture */}
-                                <div className="space-y-2">
-                                    <Label>Profile Picture *</Label>
-                                    <div className="flex items-center gap-4">
-                                        {profilePicturePreview ? (
-                                            <div className="relative">
-                                                <img
-                                                    src={profilePicturePreview}
-                                                    alt="Profile"
-                                                    className="w-24 h-24 rounded-full object-cover border-2 border-gray-200"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => {
-                                                        setProfilePicture(null);
-                                                        setProfilePicturePreview(null);
-                                                    }}
-                                                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1"
+                                {/* Profile Photo Upload */}
+                                <div className="space-y-4">
+                                    <Label className="text-sm font-semibold text-gray-700">Profile Photo *</Label>
+                                    <div className="flex items-center gap-8 p-6 bg-gray-50/50 rounded-[24px] border border-dashed border-gray-200 group hover:border-[#a73f2b] transition-all">
+                                        <div className="relative">
+                                            {profilePicturePreview ? (
+                                                <div className="relative w-32 h-32">
+                                                    <img
+                                                        src={profilePicturePreview}
+                                                        alt="Profile"
+                                                        className="w-full h-full rounded-[24px] object-cover border-4 border-white shadow-md"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            setProfilePicture(null);
+                                                            setProfilePicturePreview(null);
+                                                        }}
+                                                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-2 shadow-lg hover:scale-110 transition-transform"
+                                                    >
+                                                        <X className="w-4 h-4" />
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    onClick={() => profilePicInputRef.current?.click()}
+                                                    className="w-32 h-32 rounded-[24px] bg-white border-2 border-dashed border-gray-200 flex flex-col items-center justify-center cursor-pointer group-hover:border-[#a73f2b]/50 group-hover:bg-white transition-all shadow-sm"
                                                 >
-                                                    <X className="w-4 h-4" />
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <div
-                                                onClick={() => profilePicInputRef.current?.click()}
-                                                className="w-24 h-24 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer hover:border-[#a73f2b] transition-colors"
-                                            >
-                                                <Upload className="w-8 h-8 text-gray-400" />
-                                            </div>
-                                        )}
-                                        <div className="text-sm text-gray-500">
-                                            <p>Upload a professional photo</p>
-                                            <p className="text-xs">JPG, PNG or WebP (Max 5MB)</p>
+                                                    <Upload className="w-8 h-8 text-gray-300 group-hover:text-[#a73f2b]" />
+                                                    <span className="text-[10px] uppercase tracking-wider font-bold text-gray-400 mt-2">Upload</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-col gap-1">
+                                            <h4 className="font-bold text-gray-900">Upload a professional photo</h4>
+                                            <p className="text-sm text-gray-500 font-light max-w-xs">This will be used as your artist profile picture once approved.</p>
+                                            <p className="text-[11px] text-gray-400 font-medium mt-1">JPG, PNG or WebP (Max 5MB)</p>
+                                        </div>
+                                        <input
+                                            ref={profilePicInputRef}
+                                            type="file"
+                                            accept="image/jpeg,image/png,image/webp"
+                                            onChange={handleProfilePicChange}
+                                            className="hidden"
+                                        />
+                                    </div>
+                                </div>
+                                
+                                {/* Bio */}
+                                <div className="space-y-4">
+                                    <Label htmlFor="bio" className="text-sm font-semibold text-gray-700">Artistic Journey & Statement *</Label>
+                                    <div className="relative">
+                                        <Textarea
+                                            id="bio"
+                                            placeholder="Tell us about your artistic journey, style, and what inspires your work..."
+                                            className="min-h-[160px] bg-white border-gray-200 focus:border-[#a73f2b] focus:ring-[#a73f2b]/10 rounded-[24px] px-6 py-5 text-gray-900 placeholder:text-gray-400 resize-none transition-all"
+                                            value={formData.bio}
+                                            onChange={e => setFormData({ ...formData, bio: e.target.value })}
+                                            required
+                                        />
+                                        <div className="absolute bottom-4 right-6">
+                                            <span className={`text-xs font-bold px-3 py-1 rounded-full ${formData.bio.trim().split(/\s+/).length >= 15 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
+                                                {formData.bio.trim() ? formData.bio.trim().split(/\s+/).length : 0} / 15 minimum
+                                            </span>
                                         </div>
                                     </div>
-                                    <input
-                                        ref={profilePicInputRef}
-                                        type="file"
-                                        accept="image/jpeg,image/png,image/webp"
-                                        onChange={handleProfilePicChange}
-                                        className="hidden"
-                                    />
+                                </div>
+                            </div>
+
+                            {/* Section 2: Portfolio & Category */}
+                            <div className="space-y-8 pt-6">
+                                <div className="flex items-center gap-3 border-b border-gray-100 pb-4">
+                                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <CheckCircle2 className="w-4 h-4 text-gray-600" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900">2. Specialization & Portfolio</h3>
                                 </div>
 
-                                {/* Bio */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="bio">About You / Artist Statement * (min 15 words)</Label>
-                                    <Textarea
-                                        id="bio"
-                                        placeholder="Tell us about your artistic journey, style, and what inspires your work..."
-                                        className="min-h-[120px] bg-white"
-                                        value={formData.bio}
-                                        onChange={e => setFormData({ ...formData, bio: e.target.value })}
-                                        required
-                                    />
-                                    <p className="text-xs text-gray-500">
-                                        Word count: {formData.bio.trim() ? formData.bio.trim().split(/\s+/).length : 0} / 15 minimum
-                                    </p>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="space-y-3">
+                                        <Label htmlFor="category" className="text-sm font-semibold text-gray-700">Primary Category *</Label>
+                                        <Select
+                                            value={formData.category}
+                                            onValueChange={v => setFormData({ ...formData, category: v })}
+                                        >
+                                            <SelectTrigger className="h-14 bg-white border-gray-200 rounded-2xl px-5 focus:ring-[#a73f2b]/10 transition-all">
+                                                <SelectValue placeholder="Select category" />
+                                            </SelectTrigger>
+                                            <SelectContent className="rounded-2xl border-gray-100 shadow-xl">
+                                                <SelectItem value="painting">Painting</SelectItem>
+                                                <SelectItem value="sculpture">Sculpture</SelectItem>
+                                                <SelectItem value="photography">Photography</SelectItem>
+                                                <SelectItem value="digital">Digital Art</SelectItem>
+                                                <SelectItem value="mixed">Mixed Media</SelectItem>
+                                                <SelectItem value="other">Other</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+
+                                    <div className="space-y-3">
+                                        <Label htmlFor="portfolio" className="text-sm font-semibold text-gray-700">Social / Behance Portfolio Link</Label>
+                                        <Input
+                                            id="portfolio"
+                                            placeholder="https://instagram.com/yourart"
+                                            value={formData.portfolio}
+                                            onChange={e => setFormData({ ...formData, portfolio: e.target.value })}
+                                            className="h-14 bg-white border-gray-200 focus:border-[#a73f2b] focus:ring-[#a73f2b]/10 rounded-2xl px-5"
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Category */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="category">Primary Art Category</Label>
-                                    <Select
-                                        value={formData.category}
-                                        onValueChange={v => setFormData({ ...formData, category: v })}
-                                    >
-                                        <SelectTrigger className="bg-white">
-                                            <SelectValue placeholder="Select category" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="painting">Painting</SelectItem>
-                                            <SelectItem value="sculpture">Sculpture</SelectItem>
-                                            <SelectItem value="photography">Photography</SelectItem>
-                                            <SelectItem value="digital">Digital Art</SelectItem>
-                                            <SelectItem value="mixed">Mixed Media</SelectItem>
-                                            <SelectItem value="other">Other</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
-
-                                {/* Portfolio Link */}
-                                <div className="space-y-2">
-                                    <Label htmlFor="portfolio">Portfolio Link (Optional)</Label>
-                                    <Input
-                                        id="portfolio"
-                                        placeholder="https://instagram.com/yourart or behance.net/yourprofile"
-                                        value={formData.portfolio}
-                                        onChange={e => setFormData({ ...formData, portfolio: e.target.value })}
-                                        className="bg-white"
-                                    />
-                                </div>
-
-                                {/* Address */}
+                                {/* Address Grid */}
                                 <div className="space-y-4">
-                                    <Label className="text-base font-medium">Address *</Label>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="md:col-span-2">
+                                    <Label className="text-sm font-semibold text-gray-700">Business Address *</Label>
+                                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-6 bg-gray-50/50 rounded-[32px] border border-gray-100">
+                                        <div className="md:col-span-4">
                                             <Input
                                                 placeholder="Street Address"
                                                 value={formData.street}
                                                 onChange={e => setFormData({ ...formData, street: e.target.value })}
-                                                className="bg-white"
+                                                className="h-12 bg-white border-gray-200 rounded-xl"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <Input
+                                                placeholder="City"
+                                                value={formData.city}
+                                                onChange={e => setFormData({ ...formData, city: e.target.value })}
+                                                className="h-12 bg-white border-gray-200 rounded-xl"
                                                 required
                                             />
                                         </div>
                                         <Input
-                                            placeholder="City"
-                                            value={formData.city}
-                                            onChange={e => setFormData({ ...formData, city: e.target.value })}
-                                            className="bg-white"
-                                            required
-                                        />
-                                        <Input
                                             placeholder="State"
                                             value={formData.state}
                                             onChange={e => setFormData({ ...formData, state: e.target.value })}
-                                            className="bg-white"
+                                            className="h-12 bg-white border-gray-200 rounded-xl"
                                             required
                                         />
                                         <Input
                                             placeholder="Pincode"
                                             value={formData.pincode}
                                             onChange={e => setFormData({ ...formData, pincode: e.target.value })}
-                                            className="bg-white"
+                                            className="h-12 bg-white border-gray-200 rounded-xl"
                                             required
                                         />
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Sample Artworks Upload */}
-                                <div className="space-y-4">
-                                    <Label className="text-base font-medium">Sample Artworks * (Upload exactly {MAX_ARTWORKS})</Label>
-                                    <p className="text-sm text-gray-500">
-                                        Upload {MAX_ARTWORKS} of your best artworks. These will be reviewed by our team.
-                                    </p>
+                            {/* Section 3: Artwork Selection */}
+                            <div className="space-y-8 pt-6">
+                                <div className="flex items-center gap-3 border-b border-gray-100 pb-4">
+                                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <Star className="w-4 h-4 text-gray-600" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-gray-900">3. Sample Artworks</h3>
+                                </div>
 
-                                    {/* Artwork Previews Grid */}
-                                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                        {artworkPreviews.map((preview, index) => (
-                                            <div key={index} className="relative group">
+                                <div className="space-y-1">
+                                    <p className="text-sm text-gray-600 font-medium">Upload exactly 5 of your best artworks. These will be reviewed by our team.</p>
+                                    <p className="text-xs text-gray-400">High quality images improve your chances of approval.</p>
+                                </div>
+
+                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {artworkPreviews.map((preview, index) => (
+                                        <motion.div 
+                                            key={index} 
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="relative group"
+                                        >
+                                            <div className="aspect-[4/5] rounded-[24px] overflow-hidden border border-gray-200 shadow-sm relative">
                                                 <img
                                                     src={preview}
                                                     alt={`Artwork ${index + 1}`}
-                                                    className="w-full aspect-square object-cover rounded-lg border-2 border-gray-200"
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                                 />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => removeArtwork(index)}
-                                                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                >
-                                                    <X className="w-4 h-4" />
-                                                </button>
-                                                <Input
-                                                    placeholder={`Title (optional)`}
-                                                    value={artworkTitles[index]}
-                                                    onChange={e => {
-                                                        const newTitles = [...artworkTitles];
-                                                        newTitles[index] = e.target.value;
-                                                        setArtworkTitles(newTitles);
-                                                    }}
-                                                    className="mt-2 text-sm"
-                                                />
+                                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => removeArtwork(index)}
+                                                        className="bg-white text-red-600 rounded-full p-2 shadow-xl hover:scale-110 transition-transform"
+                                                    >
+                                                        <X className="w-5 h-5" />
+                                                    </button>
+                                                </div>
                                             </div>
-                                        ))}
+                                        </motion.div>
+                                    ))}
 
-                                        {/* Upload Button */}
-                                        {artworkFiles.length < MAX_ARTWORKS && (
-                                            <div
-                                                onClick={() => fileInputRef.current?.click()}
-                                                className="aspect-square border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-[#a73f2b] hover:bg-gray-50 transition-colors"
-                                            >
-                                                <ImageIcon className="w-10 h-10 text-gray-400 mb-2" />
-                                                <p className="text-sm text-gray-500">Add Artwork</p>
-                                                <p className="text-xs text-gray-400">{artworkFiles.length}/{MAX_ARTWORKS}</p>
+                                    {artworkFiles.length < MAX_ARTWORKS && (
+                                        <div
+                                            onClick={() => fileInputRef.current?.click()}
+                                            className="aspect-[4/5] border-2 border-dashed border-gray-200 rounded-[24px] flex flex-col items-center justify-center cursor-pointer hover:border-[#a73f2b] hover:bg-gray-50/50 transition-all group"
+                                        >
+                                            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                                <Plus className="w-6 h-6 text-gray-400 group-hover:text-[#a73f2b]" />
                                             </div>
-                                        )}
+                                            <p className="text-xs font-bold text-gray-500 group-hover:text-gray-900 uppercase tracking-widest">Add Artwork</p>
+                                            <p className="text-[10px] text-gray-400 mt-2 font-medium">{artworkFiles.length} / {MAX_ARTWORKS} Uploaded</p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <input
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept="image/jpeg,image/png,image/webp"
+                                    multiple
+                                    onChange={handleArtworkUpload}
+                                    className="hidden"
+                                />
+
+                                <div className="p-5 bg-gray-50 rounded-2xl flex items-start gap-4">
+                                    <div className="w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center mt-0.5">
+                                        <Clock className="w-3 h-3 text-gray-500" />
                                     </div>
-
-                                    <input
-                                        ref={fileInputRef}
-                                        type="file"
-                                        accept="image/jpeg,image/png,image/webp"
-                                        multiple
-                                        onChange={handleArtworkUpload}
-                                        className="hidden"
-                                    />
-
-                                    <p className="text-xs text-gray-500">
-                                        JPG, PNG or WebP (Max 5MB each). {artworkFiles.length}/{MAX_ARTWORKS} uploaded
+                                    <p className="text-xs text-gray-500 flex-1 leading-relaxed">
+                                        Allowed formats: JPG, PNG or WebP. Maximum file size is 5MB each. You must provide exactly 5 artworks for a complete portfolio review.
                                     </p>
                                 </div>
+                            </div>
 
-                                {/* Submit Button */}
-                                <div className="pt-4">
-                                    <Button
-                                        type="submit"
-                                        className="w-full bg-gradient-to-r from-[#a73f2b] to-[#b30452] hover:brightness-110 hover:shadow-[0px_6px_20px_rgba(179,4,82,0.35)] rounded-[10px] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-250 border-0 text-white py-6 text-lg"
-                                        disabled={isSubmitting || artworkFiles.length < MIN_ARTWORKS}
-                                    >
-                                        {isSubmitting ? (
-                                            <>
-                                                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                                Submitting Application...
-                                            </>
-                                        ) : (
-                                            'Submit Application'
-                                        )}
-                                    </Button>
-                                    <p className="text-xs text-center text-gray-500 mt-4">
-                                        By submitting, you agree to ArtVPP's{' '}
-                                        <Link to="/terms" className="text-[#a73f2b] hover:underline">Vendor Terms & Conditions</Link>.
-                                    </p>
-                                </div>
-                            </form>
-                        </CardContent>
-                    </Card>
+                            {/* Submit Section */}
+                            <div className="pt-12 border-t border-gray-100 text-center space-y-6">
+                                <Button
+                                    type="submit"
+                                    className="w-full h-16 bg-gradient-to-r from-[#a73f2b] to-[#b30452] hover:brightness-110 hover:shadow-[0_10px_30px_rgba(179,4,82,0.3)] rounded-2xl border-0 text-white font-bold text-xl transition-all shadow-lg hover:-translate-y-1"
+                                    disabled={isSubmitting || artworkFiles.length < MIN_ARTWORKS}
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <Loader2 className="w-6 h-6 mr-3 animate-spin" />
+                                            Filing Application...
+                                        </>
+                                    ) : (
+                                        'Submit Application'
+                                    )}
+                                </Button>
+                                
+                                <p className="text-sm text-gray-500">
+                                    By submitting, you agree to ArtVPP's{' '}
+                                    <Link to="/terms" className="text-[#a73f2b] font-bold hover:underline">Vendor Terms & Conditions</Link>.
+                                </p>
+                            </div>
+                        </form>
+                    </CardContent>
+                </Card>
+
+                {/* Trust Badges */}
+                <div className="mt-16 flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+                    <div className="flex items-center gap-2">
+                        <Lock className="w-5 h-5" />
+                        <span className="text-sm font-bold uppercase tracking-widest">Secure Review</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5" />
+                        <span className="text-sm font-bold uppercase tracking-widest">Verified Artists</span>
+                    </div>
                 </div>
             </div>
         </div>

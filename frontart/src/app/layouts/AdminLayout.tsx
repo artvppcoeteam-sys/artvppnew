@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
-import { LayoutDashboard, Users, Store as StoreIcon, ImageIcon, ShoppingBag, Layers, Palette, CreditCard, PieChart, FileText, Settings, HelpCircle, LogOut, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Users, Store as StoreIcon, ImageIcon, ShoppingBag, Layers, Palette, CreditCard, PieChart, FileText, Settings, HelpCircle, LogOut, Menu, X, Star } from 'lucide-react';
 import { cn } from '../components/ui/utils';
 import { Button } from '../components/ui/button';
 import { motion, AnimatePresence } from 'motion/react';
@@ -29,6 +29,7 @@ export function AdminLayout() {
                 { id: 'vendors', label: 'Sellers / Vendors', icon: StoreIcon },
                 { id: 'users', label: 'Users', icon: Users },
                 { id: 'artworks', label: 'Artworks', icon: ImageIcon },
+                { id: 'featured-artists', label: 'Featured Artists', icon: Star },
                 { id: 'orders', label: 'Orders', icon: ShoppingBag },
             ]
         },

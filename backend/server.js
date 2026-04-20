@@ -21,6 +21,7 @@ import couponRoute from "./routes/coupon.routes.js";
 import notificationRoute from "./routes/notification.routes.js";
 import serviceRoute from "./routes/service.routes.js";
 import workshopRoute from "./routes/workshop.routes.js";
+import featuredArtistRoute from "./routes/featuredArtistRoutes.js";
 
 // Import error handler middleware
 import { errorHandler, notFound } from "./middleware/errorHandler.js";
@@ -108,7 +109,7 @@ app.use(helmet());
 // General rate limit for all routes
 const generalLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // 100 requests per 15 minutes
+    max: process.env.NODE_ENV === "production" ? 100 : 1000, // Much higher limit in development
     message: {
         success: false,
         message: "Too many requests, please try again later"
@@ -121,7 +122,7 @@ app.use(generalLimiter);
 // Stricter rate limit for auth routes (login, register, forgot-password)
 const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 10, // Only 10 attempts per 15 minutes
+    max: process.env.NODE_ENV === "production" ? 10 : 100, // Higher limit in development
     message: {
         success: false,
         message: "Too many authentication attempts, please try again after 15 minutes"
@@ -195,6 +196,9 @@ app.use("/api/v1/services", serviceRoute);
 
 // Workshop routes
 app.use("/api/v1/workshops", workshopRoute);
+
+// Featured Artist routes
+app.use("/api/v1/featured-artists", featuredArtistRoute);
 
 // ===========================================
 // ERROR HANDLING

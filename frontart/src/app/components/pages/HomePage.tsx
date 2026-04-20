@@ -5,8 +5,8 @@ import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
-import { featuredArtists } from '../../data/mockData';
-import { getProducts } from '../../utils/api';
+import { featuredArtists as mockFeaturedArtists } from '../../data/mockData';
+import { getProducts, getFeaturedArtists } from '../../utils/api';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 // Slider images are now loaded from Cloudinary URLs
@@ -38,6 +38,7 @@ export function HomePage() {
   const [loadingPortfolio, setLoadingPortfolio] = useState(false);
 
   const [featuredArtworks, setFeaturedArtworks] = useState<any[]>([]);
+  const [displayArtists, setDisplayArtists] = useState<any[]>([]);
 
   // Fetch real products for the featured collection
   useEffect(() => {
@@ -60,6 +61,25 @@ export function HomePage() {
       }
     };
     fetchFeatured();
+  }, []);
+
+  // Fetch dynamic featured artists
+  useEffect(() => {
+    const fetchArtists = async () => {
+      try {
+        const res = await getFeaturedArtists();
+        if (res.success && res.data && res.data.length > 0) {
+          setDisplayArtists(res.data);
+        } else {
+          // Fallback to mock data if empty
+          setDisplayArtists(mockFeaturedArtists);
+        }
+      } catch (e) {
+        console.error('Failed to fetch featured artists:', e);
+        setDisplayArtists(mockFeaturedArtists);
+      }
+    };
+    fetchArtists();
   }, []);
 
   const heroSlides = [
@@ -88,7 +108,11 @@ export function HomePage() {
 
 
   const handleViewPortfolio = async (artistId: string) => {
-    const artist = featuredArtists.find(a => a.id === artistId);
+    let artist = displayArtists.find(a => (a.artistId || a.id) === artistId);
+    if (!artist) {
+      artist = mockFeaturedArtists.find(a => a.id === artistId);
+    }
+    
     if (!artist) return;
 
     setSelectedArtist(artist);
@@ -96,16 +120,19 @@ export function HomePage() {
     setArtistArtworks([]);
 
     try {
-      // If we have a mongoId, use that for precise filtering by the artist reference
-      // Otherwise fallback to searching by name
-      const queryParams: any = { limit: 6 };
-      if (artist.mongoId) {
-        queryParams.artist = artist.mongoId;
-      } else {
-        queryParams.search = artist.name;
+      // If the artist is linked to a user account, fetch their specifically featured artworks
+      if (artist.artistId) {
+        const res = await getPublicFeaturedArtworks(artist.artistId);
+        if (res.success && res.data && res.data.length > 0) {
+          setArtistArtworks(res.data);
+          setLoadingPortfolio(false);
+          return;
+        }
       }
-
-      const res = await getProducts(queryParams);
+      
+      // Fallback: If no account/featured art, search products strictly by artist name
+      // use "title" or "artist" specifically if possible. Using "search" can be broad.
+      const res = await getProducts({ search: `"${artist.name}"`, limit: 6 });
       if (res.success && res.data?.products) {
         setArtistArtworks(res.data.products);
       }
@@ -151,22 +178,17 @@ export function HomePage() {
               variants={stagger}
               className="flex flex-col items-center"
             >
-              {/* Badge */}
-              <motion.div variants={fadeIn} className="mb-6">
-                <span className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 text-sm font-medium text-white shadow-sm">
-                  Values Art & Creativity
-                </span>
-              </motion.div>
+
 
               {/* Main Heading improved visibility and responsiveness */}
               <motion.div variants={fadeIn} className="mb-2 w-full">
-                <h1 className="text-3xl sm:text-5xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.2] lg:leading-[1.1] drop-shadow-lg" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <h1 className="text-3xl sm:text-5xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.2] lg:leading-[1.1] drop-shadow-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
                   Your ART deserves
                 </h1>
               </motion.div>
 
               <motion.div variants={fadeIn} className="mb-6 w-full">
-                <h2 className="text-3xl sm:text-5xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.2] lg:leading-[1.1] drop-shadow-lg" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <h2 className="text-3xl sm:text-5xl lg:text-[72px] font-bold text-white tracking-tight leading-[1.2] lg:leading-[1.1] drop-shadow-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
                   Freedom Upload Free on
                 </h2>
               </motion.div>
@@ -536,22 +558,25 @@ export function HomePage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-y-20 gap-x-8 pt-10">
-              {featuredArtists.map((artist) => (
+            <div className="flex flex-wrap justify-center gap-y-20 gap-x-8 pt-20">
+              {displayArtists.map((artist) => (
                 <motion.div
-                  key={artist.id}
+                  key={artist.id || artist.artistId}
                   variants={fadeIn}
                   whileHover={{ y: -6, boxShadow: '0 14px 40px rgba(0,0,0,0.12)' }}
-                  className="bg-white rounded-[18px] p-7 pt-16 shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex flex-col items-center text-center transition-all duration-300 ease-in-out group cursor-pointer relative"
-                  onClick={() => handleViewPortfolio(artist.id)}
+                  className="bg-white rounded-[18px] p-7 pt-16 shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex flex-col items-center text-center transition-all duration-300 ease-in-out group cursor-pointer relative w-full sm:w-[calc(50%-2rem)] lg:w-[calc(25%-2rem)] min-w-[280px] max-w-[320px]"
+                  onClick={() => handleViewPortfolio(artist.artistId || artist.id)}
                 >
                   {/* Overlapping Artist Image */}
                   <div className="absolute -top-[65px] left-1/2 -translate-x-1/2 z-10">
-                    <div className="w-[130px] h-[130px] rounded-full overflow-hidden border-4 border-white shadow-[0_8px_25px_rgba(0,0,0,0.15)] bg-white">
+                    <div className="w-[130px] h-[130px] rounded-full overflow-hidden border-4 border-white shadow-[0_8px_25px_rgba(0,0,0,0.15)] bg-gray-50 flex items-center justify-center">
                       <img
-                        src={artist.avatar}
+                        src={artist.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(artist.name)}&background=f0f0f0&color=a73f2b&size=200`}
                         alt={artist.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${encodeURIComponent(artist.name)}&background=f0f0f0&color=a73f2b&size=200`;
+                        }}
                       />
                     </div>
                   </div>
@@ -560,7 +585,7 @@ export function HomePage() {
                     {artist.name}
                   </h3>
                   <p className="text-sm text-gray-500 font-medium mb-6">
-                    {artist.specialty}
+                    {artist.specialty || artist.category}
                   </p>
 
                   <div className="w-full flex items-center justify-around border-y border-gray-50 py-4 mb-6">
@@ -586,7 +611,7 @@ export function HomePage() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleViewPortfolio(artist.id);
+                      handleViewPortfolio(artist.artistId || artist.id);
                     }}
                     className="w-full bg-gradient-to-r from-[#a73f2b] to-[#b30452] text-white font-bold py-2.5 rounded-[10px] transition-all duration-300 hover:-translate-y-0.5 shadow-md shadow-[#b30452]/20 text-sm"
                   >

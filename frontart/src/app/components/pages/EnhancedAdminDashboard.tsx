@@ -16,6 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '../ui/dropdown-menu';
+import { AdminFeaturedArtists } from '../dashboard/admin/AdminFeaturedArtists';
 import {
   BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
@@ -247,6 +248,7 @@ export function EnhancedAdminDashboard({ onNavigate }: EnhancedAdminDashboardPro
             <TabsTrigger value="orders">Orders</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="vendors">Vendor Applications</TabsTrigger>
+            <TabsTrigger value="featured">Featured Artists</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
 
@@ -466,6 +468,11 @@ export function EnhancedAdminDashboard({ onNavigate }: EnhancedAdminDashboardPro
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* Featured Artists Tab */}
+          <TabsContent value="featured">
+             <AdminFeaturedArtists />
           </TabsContent>
 
           {/* Settings Tab */}
