@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Grid, List, Search } from 'lucide-react';
+import { Grid, List, Search, Star, Loader2 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Input } from '../ui/input';
 import { Slider } from '../ui/slider';
+import { Badge } from '../ui/badge';
 import { ProductCard, Product } from '../ProductCard';
 import { getProducts } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
@@ -120,68 +121,81 @@ export function ProductCategoryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FB]">
-      {/* Header Area */}
-      <div className="bg-white border-b py-8 shadow-sm">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl lg:text-4xl mb-2 font-semibold text-gray-900" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Discover Art
-          </h1>
-          <p className="text-gray-500 text-sm">
-            Explore original artworks, prints, and handcrafted pieces from independent artists.
-          </p>
+    <div className="min-h-screen bg-[#F7F8FA] relative pb-24">
+      {/* Artistic Hero Header Section (Sync with Artist/Service pages) */}
+      <div className="relative h-[420px] bg-[#0A0A0A] overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=1972&auto=format&fit=crop" 
+            alt="Art Gallery Background" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#F7F8FA]" />
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col items-center justify-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-md" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Explore the <span className="text-[#a73f2b]">Art Gallery</span>
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+              Discover unique expressions and timeless masterpieces from India's most talented independent artists.
+            </p>
+          </motion.div>
         </div>
       </div>
 
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
+      {/* Main Content Area - Overlapping with Hero for tighter layout */}
+      <div className="max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-20">
+        <div className="flex flex-col lg:flex-row gap-10">
 
           {/* Sidebar Filters */}
-          <div className="w-full lg:w-56 shrink-0 space-y-6">
-            <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 sticky top-24">
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="font-semibold text-gray-900 text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>Filters</h3>
+          <div className="w-full lg:w-64 shrink-0">
+            <div className="bg-white/95 backdrop-blur-md p-6 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-white sticky top-24">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="font-bold text-gray-900 text-xl" style={{ fontFamily: 'Outfit, sans-serif' }}>Filters</h3>
                 {(selectedCategories.length > 0 || priceRange[0] > 0 || priceRange[1] < 50000) && (
-                  <button onClick={clearFilters} className="text-xs text-[#b30452] hover:underline font-medium">
-                    Clear All
+                  <button onClick={clearFilters} className="text-xs text-[#b30452] hover:underline font-bold uppercase tracking-widest">
+                    Reset
                   </button>
                 )}
               </div>
 
               {/* Price Filter */}
-              <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-3 text-xs uppercase tracking-wider">Price Range</h4>
+              <div className="mb-10">
+                <h4 className="font-bold text-gray-400 mb-5 text-[10px] uppercase tracking-[0.2em]">Price Range</h4>
                 <Slider
                   defaultValue={[0, 50000]}
                   max={maxPriceLimit}
                   step={100}
                   value={[priceRange[0], priceRange[1]]}
                   onValueChange={(val) => setPriceRange([val[0], val[1]])}
-                  className="mb-3"
+                  className="mb-5"
                 />
                 <div className="flex items-center justify-between">
-                  <span className="text-xs bg-gray-50 px-2 py-1 rounded-lg border border-gray-100 font-medium text-gray-600">₹{priceRange[0].toLocaleString()}</span>
-                  <span className="text-xs text-gray-400">—</span>
-                  <span className="text-xs bg-gray-50 px-2 py-1 rounded-lg border border-gray-100 font-medium text-gray-600">₹{priceRange[1].toLocaleString()}{priceRange[1] === maxPriceLimit ? '+' : ''}</span>
+                  <div className="bg-gray-50 px-3 py-2 rounded-xl border border-gray-100 text-xs font-bold text-gray-900">₹{priceRange[0].toLocaleString()}</div>
+                  <span className="text-gray-300 px-1">—</span>
+                  <div className="bg-gray-50 px-3 py-2 rounded-xl border border-gray-100 text-xs font-bold text-gray-900">₹{priceRange[1].toLocaleString()}{priceRange[1] === maxPriceLimit ? '+' : ''}</div>
                 </div>
               </div>
 
               {/* Category Filter */}
               <div>
-                <h4 className="font-semibold text-gray-700 mb-3 text-xs uppercase tracking-wider">Categories</h4>
-                <div className="space-y-2">
-                  {availableCategories.length === 0 && !loading && (
-                    <p className="text-xs text-gray-500">No categories found.</p>
-                  )}
+                <h4 className="font-bold text-gray-400 mb-5 text-[10px] uppercase tracking-[0.2em]">Categories</h4>
+                <div className="space-y-3">
                   {availableCategories.map(cat => (
-                    <label key={cat} className="flex items-center gap-2.5 cursor-pointer group" onClick={() => toggleCategory(cat)}>
-                      <div className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-all duration-200 ${selectedCategories.includes(cat)
-                        ? 'bg-gradient-to-r from-[#a73f2b] to-[#b30452] border-[#a73f2b]'
-                        : 'border-gray-300 group-hover:border-[#a73f2b]'
+                    <label key={cat} className="flex items-center gap-3 cursor-pointer group" onClick={() => toggleCategory(cat)}>
+                      <div className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${selectedCategories.includes(cat)
+                        ? 'bg-gradient-to-br from-[#a73f2b] to-[#b30452] border-transparent shadow-md shadow-[#b30452]/20'
+                        : 'border-gray-100 bg-gray-50 group-hover:border-[#a73f2b]/30'
                         }`}>
-                        {selectedCategories.includes(cat) && <span className="text-white text-[9px] font-bold">✓</span>}
+                        {selectedCategories.includes(cat) && <span className="text-white text-[10px] font-bold italic">✓</span>}
                       </div>
-                      <span className="text-sm text-gray-600 group-hover:text-gray-900 capitalize transition-colors">{cat}</span>
+                      <span className={`text-sm tracking-wide transition-all duration-300 capitalize ${selectedCategories.includes(cat) ? 'text-gray-900 font-bold' : 'text-gray-500 group-hover:text-gray-900'}`}>{cat}</span>
                     </label>
                   ))}
                 </div>
@@ -192,28 +206,28 @@ export function ProductCategoryPage() {
           {/* Main Content Area */}
           <div className="flex-1">
             {/* Controls Bar */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between bg-white p-3 rounded-xl shadow-sm border border-gray-100 mb-5 gap-3">
+            <div className="flex flex-col md:flex-row md:items-center justify-between bg-white/60 backdrop-blur-xl p-5 rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-white mb-10 gap-5">
 
-              <div className="relative max-w-xs w-full">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <div className="relative max-w-sm w-full group">
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-[#b30452] transition-colors" />
                 <Input
-                  placeholder="Search artworks, artists..."
-                  className="pl-9 rounded-lg bg-gray-50 border-gray-200 focus:bg-white transition-all h-9 text-sm"
+                  placeholder="Masterpieces, artists, styles..."
+                  className="pl-12 rounded-2xl bg-gray-50/50 border-gray-100 focus:bg-white focus:border-[#b30452]/30 focus:ring-[#b30452]/5 transition-all h-12 text-sm shadow-inner"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
 
-              <div className="flex items-center gap-3 ml-auto">
-                <span className="text-gray-500 text-sm hidden md:block">
-                  <strong className="text-gray-900">{filteredProducts.length}</strong> results
+              <div className="flex items-center gap-5 ml-auto">
+                <span className="text-gray-400 text-[10px] hidden md:block uppercase tracking-[0.2em] font-black">
+                  <span className="text-gray-900 text-sm">{filteredProducts.length}</span> Pieces
                 </span>
 
                 <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-[160px] rounded-lg border-gray-200 h-9 bg-gray-50 text-sm">
-                    <SelectValue placeholder="Sort by" />
+                  <SelectTrigger className="w-[200px] rounded-2xl border-gray-100 h-12 bg-gray-50/50 text-sm focus:ring-0 active:scale-95 transition-transform">
+                    <SelectValue placeholder="Sort" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-lg">
+                  <SelectContent className="rounded-2xl border-white/60 shadow-2xl">
                     <SelectItem value="featured">Featured</SelectItem>
                     <SelectItem value="price-low">Price: Low to High</SelectItem>
                     <SelectItem value="price-high">Price: High to Low</SelectItem>
@@ -221,109 +235,112 @@ export function ProductCategoryPage() {
                   </SelectContent>
                 </Select>
 
-                <div className="hidden md:flex bg-gray-100 p-0.5 rounded-lg border border-gray-200">
+                <div className="hidden md:flex bg-gray-100/50 p-1 rounded-2xl border border-gray-100">
                   <Button
                     variant={viewMode === 'grid' ? 'default' : 'ghost'}
                     size="sm"
                     onClick={() => setViewMode('grid')}
-                    className={`h-8 w-8 p-0 rounded-md ${viewMode === 'grid' ? 'bg-white text-gray-900 shadow-sm hover:bg-white/90' : 'text-gray-500'}`}
+                    className={`h-10 w-10 p-0 rounded-xl transition-all ${viewMode === 'grid' ? 'bg-white text-gray-900 shadow-md scale-105' : 'text-gray-400 hover:text-gray-600'}`}
                   >
-                    <Grid className="w-4 h-4" />
+                    <Grid className="w-5 h-5" />
                   </Button>
                   <Button
                     variant={viewMode === 'list' ? 'default' : 'ghost'}
                     size="sm"
                     onClick={() => setViewMode('list')}
-                    className={`h-8 w-8 p-0 rounded-md ${viewMode === 'list' ? 'bg-white text-gray-900 shadow-sm hover:bg-white/90' : 'text-gray-500'}`}
+                    className={`h-10 w-10 p-0 rounded-xl transition-all ${viewMode === 'list' ? 'bg-white text-gray-900 shadow-md scale-105' : 'text-gray-400 hover:text-gray-600'}`}
                   >
-                    <List className="w-4 h-4" />
+                    <List className="w-5 h-5" />
                   </Button>
                 </div>
               </div>
             </div>
 
-            {/* Product Grid / List */}
+            {/* Product Rendering */}
             {loading ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 px-2">
                 {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="animate-pulse flex flex-col bg-white p-3 rounded-xl"
-                    style={{ aspectRatio: '2/3' }}
-                  >
-                    <div className="bg-gray-200 rounded-lg mb-3" style={{ flex: 1 }}></div>
-                    <div className="h-3 bg-gray-200 w-2/3 mb-1.5 rounded"></div>
-                    <div className="h-3 bg-gray-200 w-1/2 mb-2 rounded"></div>
-                    <div className="h-7 bg-gray-200 w-full rounded-lg"></div>
-                  </motion.div>
+                  <div key={i} className="animate-pulse bg-white p-4 rounded-[32px] border border-gray-100 flex flex-col gap-4">
+                    <div className="aspect-[4/5] bg-gray-50 rounded-2xl"></div>
+                    <div className="h-4 bg-gray-50 rounded w-2/3"></div>
+                    <div className="h-4 bg-gray-50 rounded w-full"></div>
+                  </div>
                 ))}
               </div>
             ) : filteredProducts.length === 0 ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100"
+                className="flex flex-col items-center justify-center py-32 bg-white/40 backdrop-blur-md rounded-[48px] border border-white/60 shadow-inner px-10"
               >
-                <p className="text-gray-900 text-lg font-semibold">No artworks found</p>
-                <p className="text-gray-500 mb-6 mt-2 text-sm">Try adjusting your filters or search terms</p>
-                <Button variant="outline" onClick={clearFilters} className="rounded-lg">
-                  Clear Filters
+                <div className="w-24 h-24 bg-gray-100/30 rounded-full flex items-center justify-center mb-8 border border-white shadow-xl">
+                  <Search className="w-10 h-10 text-gray-300" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 tracking-tight">No Masterpieces Found</h3>
+                <p className="text-gray-500 mb-10 max-w-sm text-center font-light leading-relaxed">
+                  The gallery is empty for these selections. Expand your search or clear filters to discover more.
+                </p>
+                <Button
+                  onClick={clearFilters}
+                  className="rounded-full px-12 h-14 bg-[#0A0A0A] hover:bg-[#b30452] text-white shadow-xl shadow-black/10 transition-all font-bold tracking-wide active:scale-95"
+                >
+                  Reset All Filters
                 </Button>
               </motion.div>
             ) : (
-              <motion.div layout className={viewMode === 'grid' ? 'grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4' : 'flex flex-col gap-4'}>
-                <AnimatePresence mode="popLayout">
-                  {filteredProducts.map((product) => (
-                    <motion.div
-                      layout
-                      key={product.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {viewMode === 'grid' ? (
-                        <ProductCard
-                          product={product}
-                          onViewDetails={() => navigate(`/product/${product.slug || product.id}`)}
-                          onAddToCart={handleAddToCart}
-                        />
-                      ) : (
-                        <div className="flex bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all duration-300">
-                          <div className="w-40 h-40 shrink-0 bg-gray-100 cursor-pointer overflow-hidden" onClick={() => navigate(`/product/${product.slug || product.id}`)}>
-                            <img src={product.image} alt={product.title} loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+              <div className={viewMode === 'grid'
+                ? "grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 px-2"
+                : "flex flex-col gap-6"
+              }>
+                {filteredProducts.map((product, idx) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx % 4 * 0.1 }}
+                  >
+                    {viewMode === 'grid' ? (
+                      <ProductCard
+                        product={product}
+                        onViewDetails={() => navigate(`/product/${product.slug || product.id}`)}
+                        onAddToCart={() => handleAddToCart(product)}
+                      />
+                    ) : (
+                      <div className="flex flex-col md:flex-row bg-white/80 backdrop-blur-md rounded-[32px] shadow-[0_15px_40px_rgba(0,0,0,0.04)] border border-white overflow-hidden hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-all duration-500 group">
+                        <div className="md:w-64 aspect-square bg-gray-100 cursor-pointer overflow-hidden" onClick={() => navigate(`/product/${product.slug || product.id}`)}>
+                          <img src={product.image} alt={product.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                        </div>
+                        <div className="p-8 flex flex-col justify-between flex-1">
+                          <div>
+                            <p className="text-[10px] text-[#b30452] font-black mb-2 uppercase tracking-[0.25em]">{product.artist}</p>
+                            <h3 className="text-2xl font-bold text-gray-900 cursor-pointer hover:text-[#b30452] transition-colors line-clamp-1 mb-3 pr-10" style={{ fontFamily: 'Outfit, sans-serif' }} onClick={() => navigate(`/product/${product.slug || product.id}`)}>
+                              {product.title}
+                            </h3>
+                            <div className="flex gap-3 items-center">
+                              <Badge variant="secondary" className="capitalize bg-gray-50 text-gray-500 border-gray-100 font-bold text-[9px] px-3 tracking-widest">{product.category}</Badge>
+                              {product.rating && !isNaN(product.rating) && product.rating > 0 && (
+                                <span className="text-[10px] text-gray-400 flex items-center gap-1.5 font-bold tracking-tighter">
+                                  <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" /> {product.rating.toFixed(1)}
+                                </span>
+                              )}
+                            </div>
                           </div>
-                          <div className="p-4 flex flex-col justify-between flex-1">
-                            <div>
-                              <p className="text-xs text-gray-500 mb-0.5">{product.artist}</p>
-                              <h3 className="text-base font-semibold text-gray-900 cursor-pointer hover:text-[#b30452] transition-colors line-clamp-1" style={{ fontFamily: 'Inter, sans-serif' }} onClick={() => navigate(`/product/${product.slug || product.id}`)}>
-                                {product.title}
-                              </h3>
-                              <div className="mt-1 flex gap-2 items-center">
-                                <span className="capitalize px-1.5 py-0.5 bg-gray-100 rounded text-[10px] text-gray-600">{product.category}</span>
-                                {product.rating && !isNaN(product.rating) && product.rating > 0 && (
-                                  <span className="text-[11px] text-gray-500">⭐ {product.rating.toFixed(1)}</span>
-                                )}
-                              </div>
-                            </div>
-                            <div className="flex items-center justify-between mt-3">
-                              <span className="text-lg font-bold text-gray-900">₹{product.price.toLocaleString('en-IN')}</span>
-                              <Button
-                                className="bg-gradient-to-r from-[#a73f2b] to-[#b30452] text-white h-8 px-4 text-xs font-semibold rounded-lg border-0 shadow-sm hover:shadow-[#b30452]/40 hover:-translate-y-0.5 transition-all duration-300"
-                                onClick={() => handleAddToCart(product)}
-                              >
-                                Add to Cart
-                              </Button>
-                            </div>
+                          <div className="flex items-center justify-between mt-auto pt-8 border-t border-gray-50">
+                            <span className="text-3xl font-black text-gray-900 tracking-tighter">₹{product.price.toLocaleString('en-IN')}</span>
+                            <Button
+                              className="bg-[#0A0A0A] hover:bg-[#b30452] text-white h-14 px-10 rounded-2xl shadow-xl shadow-black/5 hover:shadow-[#b30452]/20 hover:-translate-y-1 transition-all duration-300 font-bold active:scale-95"
+                              onClick={() => handleAddToCart(product)}
+                            >
+                              Add to Cart
+                            </Button>
                           </div>
                         </div>
-                      )}
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
-              </motion.div>
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
             )}
           </div>
         </div>
